@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>WallMapper</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript" src="http://github.com/jashkenas/coffee-script/raw/master/extras/coffee-script.js"></script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script type="text/coffeescript" src="app.coffee"></script>
+    <style>
+      #wm_viewer, #wm_result {
+        width: 640px;
+        height: 640px;
+        float: left;
+        margin: 10px;
+        border: 1px solid gray;
+      }
+
+      #wm_result {
+        font-family: monospace;
+        white-space: pre;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wm_viewer"></div>
+    <textarea id="wm_result"></textarea>
+    <a id="wm_draw_button" href="#">Draw map</a>
+  </body>
+</html>
