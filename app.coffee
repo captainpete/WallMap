@@ -46,7 +46,7 @@ class Mapper
     $('#wm_result').text(@result)
 
     @map.setZoom 17
-    @map.panToBounds(@bounds)
+    @map.setCenter @bounds.getCenter()
 
   over: ->
     !@map.getBounds().intersects(@bounds)
