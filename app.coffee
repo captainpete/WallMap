@@ -6,6 +6,7 @@ class Mapper
     @orgZoom = 17
     @tileSize = 640
     @scale = 2
+    @padding = 100
 
   initMap: ->
     latLng = new google.maps.LatLng(-37.8133, 144.9627)
@@ -83,9 +84,15 @@ class Mapper
         size: "#{@tileSize}x#{@tileSize}"
         scale: @scale
         zoom: @maxZoom
-      params += "&" + $.param(style: "feature:road.arterial|visibility:on|saturation:25|hue:0x33ff00")
-      params += "&" + $.param(style: "feature:landscape.man_made|visibility:simplified|hue:0x8800ff|saturation:9|lightness:8")
-      params += "&" + $.param(style: "feature:road.highway|visibility:on|saturation:-25|lightness:15|hue:0x9000ff")
+
+      styles = [
+        "feature:road.arterial|visibility:on|saturation:25|hue:0x33ff00",
+        "feature:landscape.man_made|visibility:simplified|hue:0x8800ff|saturation:9|lightness:8",
+        "feature:road.highway|visibility:on|saturation:-25|lightness:15|hue:0x9000ff"
+      ]
+      for style in styles
+        params += "&#{$.param(style: style)}"
+
       url = "http://maps.googleapis.com/maps/api/staticmap?#{params}"
 
       @result += "\n-draw \"image over #{@x * @tileSize * @scale},#{@y * @tileSize * 0.9 * @scale} 0,0 '#{url}'\" \\"
