@@ -17,11 +17,12 @@ class Mapper
     @mapDiv = $('#wm_map')
     @map = new google.maps.Map(@mapDiv[0], opts)
 
-  draw: (detailZoom) ->
+  draw: ->
     orgZoom = @map.getZoom()
 
     @x = 0
     @y = 0
+    @detailZoom = $('#wm_detail_zoom').val()
     this.stamp "Entire map", no
 
     @bounds = @map.getBounds()
@@ -30,7 +31,7 @@ class Mapper
 
     center = new google.maps.LatLng(@ne.lat(), @sw.lng())
     @map.setCenter center
-    @map.setZoom detailZoom
+    @map.setZoom 
     @map.panBy @tileSizeX / 2, @tileSizeY / 2
     
     @result = ''
@@ -90,7 +91,7 @@ class Mapper
     @result += "\n-draw \"image over #{@x * @tileSizeX * @scale},#{@y * @tileSizeY * 0.9 * @scale} 0,0 '#{this.currentTileUrl()}'\" \\"
 
   currentTileUrl: ->
-    this.tileUrl(@map.getCenter(), @maxZoom, @tileSizeX, @tileSizeY)
+    this.tileUrl(@map.getCenter(), @detailZoom, @tileSizeX, @tileSizeY)
 
   tileUrl: (center, zoom, width, height) ->
     params = $.param
@@ -144,7 +145,7 @@ $ ->
 
   $('#wm_draw_button').click (event) ->
     event.preventDefault()
-    mapper.draw(parseInt($('#wm_detail_zoom').val()))
+    mapper.draw()
 
   updateExample = ->
     map = mapper.map
