@@ -6,6 +6,7 @@ class Mapper
     @tileSizeY = @mapDiv.innerHeight()
     @scale = 2
     @padding = 100
+    @overlays = new Array()
 
   initMap: ->
     latLng = new google.maps.LatLng(-37.8133, 144.9627)
@@ -18,6 +19,9 @@ class Mapper
     @map = new google.maps.Map(@mapDiv[0], opts)
 
   draw: ->
+    for overlay in @overlays
+      overlay.setMap(null)
+
     orgZoom = @map.getZoom()
 
     @x = 0
@@ -83,6 +87,7 @@ class Mapper
       fillOpacity: 0.15,
       map: @map,
       bounds: bounds
+    @overlays.push(rect)
     console.log "#{message}: #{bounds.toString()}"
 
     this.save() if shouldSave
