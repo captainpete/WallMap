@@ -9,9 +9,9 @@ class Mapper
     @overlays = new Array()
 
   initMap: ->
-    latLng = new google.maps.LatLng(-37.8133, 144.9627)
+    latLng = new google.maps.LatLng(-37.8123, 144.9627)
     opts =
-      zoom: 17
+      zoom: 16
       center: latLng
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
