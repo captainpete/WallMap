@@ -35,7 +35,7 @@ class Mapper
 
     center = new google.maps.LatLng(@ne.lat(), @sw.lng())
     @map.setCenter center
-    @map.setZoom 
+    @map.setZoom parseInt(@detailZoom)
     @map.panBy @tileSizeX / 2, @tileSizeY / 2
     
     @result = ''
