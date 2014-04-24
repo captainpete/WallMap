@@ -3,7 +3,7 @@ WallMap
 
 A large map compiler for Google Maps. Written in CoffeeScript.
 
-This is a stand-alone website that provides an ImageMagick convert command for fetching and combining many Google Maps into one giant image. For more explanation, read [how to make a Google Maps poster](http://dojo7.com/2012/01/17/how-to-make-a-huge-google-maps-poster.html).
+This is a stand-alone website that provides an ImageMagick convert command for fetching and combining many Google Maps into one giant image.
 
 
 Using this project
